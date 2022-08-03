@@ -42,7 +42,7 @@ class Solution:
         # return: bool
     
         # TODO: Write code below to return a bool with the solution to the prompt
-        nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+        nums = "1234567890"
         num = 0
         c_count = pool.count("C")
         total = len(pool)
@@ -50,6 +50,7 @@ class Solution:
             if x in nums:
                 num = int(x)
             elif cost.count(x) > pool.count(x) and c_count > 0:
+                total -= 1
                 c_count -= 1
             elif pool.count(x) < cost.count(x):
                 return False
@@ -58,7 +59,7 @@ class Solution:
         if total - num >= 0:
             return True
         else:
-            return True
+            return False
 
 def main():
     string1 = input().strip()
