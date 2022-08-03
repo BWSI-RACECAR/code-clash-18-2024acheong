@@ -42,24 +42,16 @@ class Solution:
         # return: bool
     
         # TODO: Write code below to return a bool with the solution to the prompt
-        nums = "1234567890"
-        num = 0
-        c_count = pool.count("C")
-        total = len(pool)
         for x in cost:
-            if x in nums:
-                num = int(x)
-            elif cost.count(x) > pool.count(x) and c_count > 0:
-                total -= 1
-                c_count -= 1
-            elif pool.count(x) < cost.count(x):
-                return False
-            else:
-                total -= 1
-        if total - num >= 0:
+            if x in pool:
+                pool = pool.replace(x, '', 1)
+                cost = cost.replace(x, '', 1)
+
+        if len(cost) == 0:
             return True
-        else:
-            return False
+        if cost.isdigit():
+            return int(cost) <= len(pool)
+        return False
 
 def main():
     string1 = input().strip()
