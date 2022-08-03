@@ -42,10 +42,23 @@ class Solution:
         # return: bool
     
         # TODO: Write code below to return a bool with the solution to the prompt
+        nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+        num = 0
+        c_count = pool.count("C")
+        total = len(pool)
         for x in cost:
-            if pool.count(x) < cost.count(x):
+            if x in nums:
+                num = int(x)
+            elif cost.count(x) > pool.count(x) and c_count > 0:
+                c_count -= 1
+            elif pool.count(x) < cost.count(x):
                 return False
-        return True
+            else:
+                total -= 1
+        if total - num >= 0:
+            return True
+        else:
+            return True
 
 def main():
     string1 = input().strip()
